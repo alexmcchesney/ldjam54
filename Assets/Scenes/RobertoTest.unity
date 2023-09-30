@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 321338631}
   - component: {fileID: 321338630}
   - component: {fileID: 321338629}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -741,10 +741,6 @@ PrefabInstance:
     - target: {fileID: 3953114961288773498, guid: ccd09f8b783cc174aa1ab664aac6f609, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7123262831517017510, guid: ccd09f8b783cc174aa1ab664aac6f609, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
