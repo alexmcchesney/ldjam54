@@ -1612,6 +1612,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _roomPrefabs:
   - {fileID: 50428388311511782, guid: 598dbcc757c91e447a7d01e3bc33db2d, type: 3}
+  - {fileID: 50428388311511782, guid: e08a653f724658143a1acda6ea3333e3, type: 3}
+  - {fileID: 50428388311511782, guid: bed63216f33ec9c4e8ee4068bae22981, type: 3}
+  - {fileID: 50428388311511782, guid: 49090e0801a892b448c04bd16d614541, type: 3}
+  - {fileID: 50428388311511782, guid: 0e12df7363030204d954e3664d28b729, type: 3}
+  - {fileID: 50428388311511782, guid: 701f55ef717fb094bab16128faeb65f6, type: 3}
+  - {fileID: 50428388311511782, guid: d85cf32ca2b0bda4d8777f3d75866af6, type: 3}
   _player: {fileID: 168735585}
   _gameOverNotice: {fileID: 1689113463}
 --- !u!1001 &2055764331
@@ -1665,6 +1671,22 @@ PrefabInstance:
     - target: {fileID: 2158074166765407363, guid: ccd09f8b783cc174aa1ab664aac6f609, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267823133253228483, guid: ccd09f8b783cc174aa1ab664aac6f609, type: 3}
+      propertyPath: anxietyCooldown
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267823133253228483, guid: ccd09f8b783cc174aa1ab664aac6f609, type: 3}
+      propertyPath: _anxietyCooldown
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267823133253228483, guid: ccd09f8b783cc174aa1ab664aac6f609, type: 3}
+      propertyPath: _recoveryOnNewRoom
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267823133253228483, guid: ccd09f8b783cc174aa1ab664aac6f609, type: 3}
+      propertyPath: _percentageRecoveryOnNewRoom
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3953114961288773498, guid: ccd09f8b783cc174aa1ab664aac6f609, type: 3}
       propertyPath: m_Name

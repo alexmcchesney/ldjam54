@@ -21,31 +21,47 @@ namespace Player
                 _value = newValue;
             }
         }
-        public bool OnAnxietyCooldown
+        public bool IsInvulnerable
         {
-            get { return Time.time < _timeOfMostRecentHit + cooldownDuration; }
+            get { return Time.time < _timeOfMostRecentHit + invulnerabilityDuration; }
         }
 
 
         public float enemyDamage = 0.1f;
-        public float cooldownDuration = 0.2f;
+        public float invulnerabilityDuration = 0.2f;
 
+        [SerializeField]
+        private float _anxietyCooldown;
+
+        [SerializeField]
+        private float _percentageRecoveryOnNewRoom;
 
         private float _value = 0;
         private float _timeOfMostRecentHit = -1f;
 
+        public void Awake()
+        {
+            GameManager.OnNewRoom += OnNewRoom;   
+        }
 
         public void Reset()
         {
             Value = 0;
         }
 
+        public void Update()
+        {
+            if(Value > 0)
+            {
+                Value -= _anxietyCooldown * Time.deltaTime;
+            }
+        }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
             Person person = collision.gameObject.GetComponent<Person>();
             if(person == null) { return; }
-            if(OnAnxietyCooldown) { return; }
+            if(IsInvulnerable) { return; }
 
             ApplyAnxiety(enemyDamage);
         }
@@ -55,6 +71,11 @@ namespace Player
         {
             _timeOfMostRecentHit = Time.time;
             Value += change;
+        }
+
+        private void OnNewRoom()
+        {
+            Value -= Value * (_percentageRecoveryOnNewRoom / 100f);
         }
     }
 }
