@@ -10,7 +10,13 @@ namespace Assets.Scripts.People
         [SerializeField]
         private float _thrust;
 
-        public Vector2 Direction;
+        public float Direction
+        {
+            set
+            {
+                _rigidBody.rotation = value;
+            }
+        }
 
         private Rigidbody2D _rigidBody;
 
@@ -21,12 +27,16 @@ namespace Assets.Scripts.People
 
         public void FixedUpdate()
         {
-            _rigidBody.AddForce(Direction * (_thrust * Time.fixedDeltaTime));
+            _rigidBody.AddForce(transform.up * (_thrust * Time.fixedDeltaTime));
         }
 
         public void OnCollisionEnter2D(Collision2D collision)
         {
-            // Todo - pick a new direction if we hit a wall, or have bounced off the same entity > x times.
+            if(collision.gameObject.CompareTag("Scenery"))
+            {
+                // Turn around
+                _rigidBody.rotation = _rigidBody.rotation + Random.Range(150, 210);
+            }
         }
     }
 
