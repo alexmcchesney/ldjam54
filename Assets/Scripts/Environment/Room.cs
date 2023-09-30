@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Assets.Scripts.Environment
 {
@@ -11,7 +13,9 @@ namespace Assets.Scripts.Environment
     {
         public GameObject Entrance;
 
-        public void OnExit()
+        private static readonly float TRANSITION_TIME = 0.5f;
+
+        public void OnExit(bool instant)
         {
             // Clean up all people
             GameObject[] livePeople = Person.LivePeople.ToArray();
@@ -19,6 +23,63 @@ namespace Assets.Scripts.Environment
             {
                 ObjectPool.PoolObject(person);
             }
+
+            StartCoroutine(SlideOut(instant));
+        }
+
+        private IEnumerator SlideOut(bool instant)
+        {
+            if (!instant)
+            {
+                Vector2 destination = new Vector2(0, -10);
+                Vector2 startPos = transform.position;
+
+                float elapsed = 0f;
+                while (!transform.position.Equals(destination))
+                {
+                    yield return null;
+                    elapsed += Time.deltaTime;
+                    float t = Mathf.Min(1, elapsed / TRANSITION_TIME);
+                    transform.position = Vector2.Lerp(startPos, destination, t);
+                }
+            }
+
+            Destroy(gameObject);
+        }
+
+        public void OnEnter(bool instant, GameObject player)
+        {
+            if (instant)
+            {
+                transform.localPosition = Vector3.zero;
+            }
+            else
+            {
+                transform.localPosition = new Vector2(0, 10);
+            }
+
+            StartCoroutine(SlideIn(instant, player));
+        }
+
+        private IEnumerator SlideIn(bool instant, GameObject player)
+        {
+            if(!instant)
+            {
+                Vector2 destination = new Vector2(0, 0);
+                Vector2 startPos = transform.position;
+
+                float elapsed = 0f;
+                while (!transform.position.Equals(destination))
+                {
+                    yield return null;
+                    elapsed += Time.deltaTime;
+                    float t = Mathf.Min(1, elapsed / TRANSITION_TIME);
+                    transform.position = Vector2.Lerp(startPos, destination, t);
+                }
+            }
+
+            player.transform.position = Entrance.transform.position;
+            player.SetActive(true);
         }
     }
 

@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         var existing = FindObjectOfType<Room>();
         if (existing == null)
         {
-            SpawnRoom();
+            SpawnRoom(true);
         }
         else
         {
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void SpawnRoom()
+    private void SpawnRoom(bool instant)
     {
         if(_currentRoomIndex > _roomPrefabs.Length-1)
         {
@@ -51,28 +51,26 @@ public class GameManager : MonoBehaviour
 
         _currentRoom = Instantiate(_roomPrefabs[_currentRoomIndex], transform);
         _currentRoom.transform.SetParent(null, false);
-        _currentRoom.transform.localPosition = Vector3.zero;
         Room room = _currentRoom.GetComponent<Room>();
-        _player.transform.position = room.Entrance.transform.position;
+        room.OnEnter(instant, _player);
     }
 
     public void NextRoom()
     {
+        _player.SetActive(false);
         _currentRoomIndex++;
-        _currentRoom.GetComponent<Room>().OnExit();
-        Destroy(_currentRoom);
-        SpawnRoom();
+        _currentRoom.GetComponent<Room>().OnExit(false);
+        SpawnRoom(false);
     }
 
     public void StartOver()
     {
         _currentRoomIndex = 0;
         _player.GetComponent<Anxiety>().Reset();
-        _currentRoom.GetComponent<Room>().OnExit();
+        _currentRoom.GetComponent<Room>().OnExit(true);
         Destroy(_currentRoom);
-        _player.SetActive(true);
         _gameOverNotice.SetActive(false);
-        SpawnRoom();
+        SpawnRoom(true);
     }
 
     public void OnAnxietyChange(float newValue)
