@@ -12,7 +12,7 @@ namespace Player {
 
         public float speed = 1f;
         public float rotationSpeed = 1000f;
-        public float recoilForce = 3f;
+        public float recoilForce = 4f;
         public float deadzone = 0.01f;
 
 

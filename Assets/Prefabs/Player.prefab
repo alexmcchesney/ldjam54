@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   rotationSpeed: 1000
-  recoilForce: 3
+  recoilForce: 4
   deadzone: 0.1
 --- !u!114 &2267823133253228483
 MonoBehaviour:
