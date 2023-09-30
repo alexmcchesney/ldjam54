@@ -189,7 +189,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 712ef5d1d8811904a81e819f0723573c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -212,8 +212,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36050685ed5475449c054ee9649a6d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 2
   rotationSpeed: 1000
+  recoilForce: 3
   deadzone: 0.1
 --- !u!114 &2267823133253228483
 MonoBehaviour:
@@ -228,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDamage: 0.1
-  cooldownDuration: 0.2
+  cooldownDuration: 0.1
 --- !u!58 &6100889505388150649
 CircleCollider2D:
   m_ObjectHideFlags: 0
