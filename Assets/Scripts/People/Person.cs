@@ -10,6 +10,8 @@ namespace Assets.Scripts.People
         [SerializeField]
         private float _thrust;
 
+        public static HashSet<GameObject> LivePeople { get; private set; } = new ();
+
         public float Direction
         {
             set
@@ -23,6 +25,16 @@ namespace Assets.Scripts.People
         public void Awake()
         {
             _rigidBody = GetComponent<Rigidbody2D>();
+        }
+
+        public void OnEnable()
+        {
+            LivePeople.Add(gameObject);
+        }
+
+        public void OnDisable()
+        {
+            LivePeople.Remove(gameObject);
         }
 
         public void FixedUpdate()
