@@ -4,22 +4,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Player {
+    [RequireComponent(typeof(Anxiety))]
     public class Controller : MonoBehaviour
     {
         Rigidbody2D _Rigidbody2D => GetComponent<Rigidbody2D> ();
-        bool OnAnxietyCooldown => GetComponent<Anxiety> ().OnAnxietyCooldown;
-
 
         public float speed = 1f;
         public float rotationSpeed = 1000f;
         public float recoilForce = 4f;
         public float deadzone = 0.01f;
 
+        private Anxiety _anxiety;
+
+        public void Awake()
+        {
+            _anxiety = GetComponent<Anxiety> ();
+        }
+
 
         private void FixedUpdate()
         {
             Vector2 direction = InputDirection();
-            if (!OnAnxietyCooldown) { _Rigidbody2D.velocity = speed * direction; }
+            if (!_anxiety.IsInvulnerable) { _Rigidbody2D.velocity = speed * direction; }
 
             if (direction == Vector2.zero) { return; }
 

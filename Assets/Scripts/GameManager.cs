@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     private GameObject _currentRoom;
 
+    public static System.Action OnNewRoom;
+
     public static GameManager Instance { get; private set; }
 
     public void Awake()
@@ -53,6 +55,10 @@ public class GameManager : MonoBehaviour
         _currentRoom.transform.SetParent(null, false);
         Room room = _currentRoom.GetComponent<Room>();
         room.OnEnter(instant, _player);
+        if(OnNewRoom != null)
+        {
+            OnNewRoom();
+        }
     }
 
     public void NextRoom()
