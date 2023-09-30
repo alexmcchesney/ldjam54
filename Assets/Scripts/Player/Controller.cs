@@ -1,3 +1,4 @@
+using Assets.Scripts.People;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,18 +6,20 @@ using UnityEngine;
 namespace Player {
     public class Controller : MonoBehaviour
     {
-        Rigidbody2D _Rigidbody2D { get { return GetComponent<Rigidbody2D> (); } }
+        Rigidbody2D _Rigidbody2D => GetComponent<Rigidbody2D> ();
+        bool OnAnxietyCooldown => GetComponent<Anxiety> ().OnAnxietyCooldown;
 
 
         public float speed = 1f;
         public float rotationSpeed = 1000f;
+        public float recoilForce = 4f;
         public float deadzone = 0.01f;
 
 
         private void FixedUpdate()
         {
             Vector2 direction = InputDirection();
-            _Rigidbody2D.velocity = speed * direction;
+            if (!OnAnxietyCooldown) { _Rigidbody2D.velocity = speed * direction; }
 
             if (direction == Vector2.zero) { return; }
 
@@ -34,6 +37,18 @@ namespace Player {
 
             if (direction.sqrMagnitude < deadzone) { return Vector2.zero; }
             return direction;
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            Person person = collision.gameObject.GetComponent<Person>();
+            if (person == null) { return; }
+
+            float recoilX = transform.position.x - collision.transform.position.x;
+            float recoilY = transform.position.y - collision.transform.position.y;
+            Vector2 recoil = recoilForce * new Vector2 (recoilX, recoilY);
+
+            _Rigidbody2D.AddForce(recoil, ForceMode2D.Impulse);
         }
 
         public void OnTriggerEnter2D(Collider2D collision)
