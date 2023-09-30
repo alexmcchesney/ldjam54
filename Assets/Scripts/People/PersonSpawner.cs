@@ -28,8 +28,7 @@ namespace Assets.Scripts.People
             while(spawned < _totalSpawned) 
             {
                 GameObject person = ObjectPool.GetObjectForType("Person", null, transform.position);
-                Vector2 direction = transform.up * -1;
-                person.GetComponent<Person>().Direction = direction;
+                person.GetComponent<Person>().Direction = transform.rotation.eulerAngles.z;
                 spawned++;
                 yield return delay;
             }
