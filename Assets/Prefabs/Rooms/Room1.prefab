@@ -6523,6 +6523,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 3334254909366892478}
     m_Modifications:
     - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _maxMass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _minMass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _maxThrust
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _minThrust
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
       propertyPath: _timeToSpawn
       value: 10
       objectReference: {fileID: 0}
@@ -6596,6 +6612,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3334254909366892478}
     m_Modifications:
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _maxMass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _minMass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _maxThrust
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _minThrust
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 92032305116779026, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
       propertyPath: m_Name
       value: PersonSpawnerLeft
