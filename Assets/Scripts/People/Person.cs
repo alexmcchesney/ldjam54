@@ -8,7 +8,7 @@ namespace Assets.Scripts.People
     public class Person : MonoBehaviour
     {
         [SerializeField]
-        private float _thrust;
+        public float Thrust;
 
         public static HashSet<GameObject> LivePeople { get; private set; } = new ();
 
@@ -39,7 +39,7 @@ namespace Assets.Scripts.People
 
         public void FixedUpdate()
         {
-            _rigidBody.AddForce(transform.up * (_thrust * Time.fixedDeltaTime));
+            _rigidBody.AddForce(transform.up * (Thrust * Time.fixedDeltaTime));
         }
 
         public void OnCollisionEnter2D(Collision2D collision)

@@ -13,6 +13,18 @@ namespace Assets.Scripts.People
         [SerializeField]
         private float _timeToSpawn;
 
+        [SerializeField]
+        private float _minThrust;
+
+        [SerializeField]
+        private float _maxThrust;
+
+        [SerializeField]
+        private float _minMass;
+
+        [SerializeField]
+        private float _maxMass;
+
         public void OnEnable()
         {
             StartCoroutine(SpawnRoutine());
@@ -27,8 +39,17 @@ namespace Assets.Scripts.People
             int spawned = 0;
             while(spawned < _totalSpawned) 
             {
-                GameObject person = ObjectPool.GetObjectForType("Person", transform, transform.position);
-                person.GetComponent<Person>().Direction = transform.rotation.eulerAngles.z;
+                GameObject personObj = ObjectPool.GetObjectForType("Person", transform, transform.position);
+                Person person = personObj.GetComponent<Person>();
+                person.Thrust = Random.Range(_minThrust, _maxThrust);
+                person.Direction = transform.rotation.eulerAngles.z;
+
+                Rigidbody2D rb = personObj.GetComponent<Rigidbody2D>();
+                rb.mass = Random.Range(_minMass, _maxMass);
+
+                float scale = 1f + ((rb.mass - 1) / 8);
+                person.transform.localScale = new Vector3(scale, scale);
+
                 spawned++;
                 yield return delay;
             }
