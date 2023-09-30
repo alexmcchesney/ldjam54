@@ -294,6 +294,13 @@ namespace Assets.Scripts.Utility
                 GUIContent.none
             );
 
+            EditorGUI.LabelField(new Rect(rect.x + 300, rect.y, 110, EditorGUIUtility.singleLineHeight), "CreateIfExhausted");
+            EditorGUI.PropertyField(
+                new Rect(rect.x + 415, rect.y, 23, EditorGUIUtility.singleLineHeight),
+                element.FindPropertyRelative("CreateIfExhausted"),
+                GUIContent.none
+            );
+
         }
 
         void DrawHeader(Rect rect)
