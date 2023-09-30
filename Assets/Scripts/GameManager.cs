@@ -1,4 +1,5 @@
 using Assets.Scripts.Environment;
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,6 +13,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject _player;
 
+    [SerializeField]
+    private GameObject _gameOverNotice;
+
     private int _currentRoomIndex = 0;
 
     private GameObject _currentRoom;
@@ -21,6 +25,7 @@ public class GameManager : MonoBehaviour
     public void Awake()
     {
         Instance = this;
+        Anxiety.OnAnxietyChange += OnAnxietyChange;
     }
 
     public void OnEnable()
@@ -57,5 +62,39 @@ public class GameManager : MonoBehaviour
         _currentRoom.GetComponent<Room>().OnExit();
         Destroy(_currentRoom);
         SpawnRoom();
+    }
+
+    public void StartOver()
+    {
+        _currentRoomIndex = 0;
+        _player.GetComponent<Anxiety>().Reset();
+        _currentRoom.GetComponent<Room>().OnExit();
+        Destroy(_currentRoom);
+        _player.SetActive(true);
+        _gameOverNotice.SetActive(false);
+        SpawnRoom();
+    }
+
+    public void OnAnxietyChange(float newValue)
+    {
+        if(newValue == 1)
+        {
+            GameOver();
+        }
+    }
+
+    private void GameOver()
+    {
+        _player.SetActive(false);
+        _gameOverNotice.SetActive(true);
+    }
+
+    public void Quit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
