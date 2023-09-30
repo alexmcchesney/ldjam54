@@ -9,12 +9,19 @@ namespace Player {
 
 
         public float speed = 1f;
-        public float deadzone = 0.1f;
+        public float rotationSpeed = 1000f;
+        public float deadzone = 0.01f;
 
 
         private void FixedUpdate()
         {
-            _Rigidbody2D.velocity = speed * InputDirection();
+            Vector2 direction = InputDirection();
+            _Rigidbody2D.velocity = speed * direction;
+
+            if (direction == Vector2.zero) { return; }
+
+            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, direction);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.fixedDeltaTime);
         }
 
 
@@ -23,9 +30,10 @@ namespace Player {
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
 
-            if ((x * x) + (y * y) < deadzone * deadzone) { return Vector2.zero; }
+            Vector2 direction = new Vector2(x, y);
 
-            return new Vector2(x, y);
+            if (direction.sqrMagnitude < deadzone) { return Vector2.zero; }
+            return direction;
         }
 
         public void OnTriggerEnter2D(Collider2D collision)
