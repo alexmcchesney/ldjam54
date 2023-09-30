@@ -9,16 +9,23 @@ namespace Player {
 
 
         public float speed = 1f;
+        public float deadzone = 0.1f;
 
 
         private void FixedUpdate()
         {
+            _Rigidbody2D.velocity = speed * InputDirection();
+        }
+
+
+        Vector2 InputDirection()
+        {
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
 
-            Vector2 dir = new Vector2(x, y).normalized;
+            if ((x * x) + (y * y) < deadzone * deadzone) { return Vector2.zero; }
 
-            _Rigidbody2D.velocity = dir * speed;
+            return new Vector2(x, y);
         }
     }
 }
