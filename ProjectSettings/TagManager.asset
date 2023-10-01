@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Scenery
   - Exit
+  - Repeller
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - UI
   - People
   - Player
-  - Triggers
-  - 
+  - PlayerTriggers
+  - PeopleTriggers
   - 
   - 
   - 
