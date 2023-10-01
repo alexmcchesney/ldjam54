@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public int CurrentRoomIndex => _currentRoomIndex;
+
+
     [SerializeField]
     private GameObject[] _roomPrefabs;
 
@@ -27,11 +30,12 @@ public class GameManager : MonoBehaviour
     public void Awake()
     {
         Instance = this;
-        Anxiety.OnAnxietyChange += OnAnxietyChange;
     }
 
     public void OnEnable()
     {
+        Anxiety.OnAnxietyChange += OnAnxietyChange;
+
         // There may be a room already loaded in the editor
         var existing = FindObjectOfType<Room>();
         if (existing == null)
@@ -42,6 +46,11 @@ public class GameManager : MonoBehaviour
         {
             _currentRoom = existing.gameObject;
         }
+    }
+
+    private void OnDisable()
+    {
+        Anxiety.OnAnxietyChange -= OnAnxietyChange;
     }
 
     private void SpawnRoom(bool instant)
