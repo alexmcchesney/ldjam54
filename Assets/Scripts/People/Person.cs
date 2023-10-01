@@ -64,7 +64,7 @@ namespace Assets.Scripts.People
         public void OnSpawn(float thrust, float direction, float mass, float percentageChanceOfAttractPointSelection)
         {
             _thrust = thrust;
-            _rigidBody.rotation = direction;
+            _rigidBody.rotation = direction + Random.Range(-5f, 5f);
             _rigidBody.mass = mass;
 
             float scale = 1f + ((mass - 1) / 7);
