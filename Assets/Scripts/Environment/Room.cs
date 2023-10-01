@@ -14,12 +14,7 @@ namespace Assets.Scripts.Environment
 
         public void OnExit(bool instant)
         {
-            // Clean up all people
-            GameObject[] livePeople = Person.LivePeople.ToArray();
-            foreach(GameObject person in livePeople) 
-            {
-                ObjectPool.PoolObject(person);
-            }
+            Person.PoolAllPeople();
 
             StartCoroutine(SlideOut(instant));
         }

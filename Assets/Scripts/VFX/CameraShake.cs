@@ -14,11 +14,19 @@ namespace VFX
         float _anxiety;
         Coroutine _shakeCoroutine;
 
+        public static CameraShake Instance { get; private set; }
 
         private void Awake()
         {
+            Instance = this;
             _startingPosition = transform.position;
         }
+
+        public void CancelShake()
+        {
+            _anxiety = 0f;
+        }
+            
 
 
         private void OnEnable()
