@@ -28,6 +28,15 @@ namespace Assets.Scripts.People
         [SerializeField]
         private float _percentageChanceOfAttractPointSelection = 25f;
 
+        [SerializeField]
+        private SpriteRenderer _doorSpriteRenderer;
+
+        [SerializeField]
+        private Sprite _doorOpenSprite;
+
+        [SerializeField]
+        private Sprite _doorClosedSprite;
+
         public void OnEnable()
         {
             StartCoroutine(SpawnRoutine());
@@ -35,6 +44,8 @@ namespace Assets.Scripts.People
 
         private IEnumerator SpawnRoutine()
         {
+            _doorSpriteRenderer.sprite = _doorOpenSprite;
+
             yield return null;
             float spawnRate = _timeToSpawn / _totalSpawned;
             WaitForSeconds delay = new WaitForSeconds(spawnRate);
@@ -49,6 +60,9 @@ namespace Assets.Scripts.People
                 spawned++;
                 yield return delay;
             }
+
+            _doorSpriteRenderer.sprite = _doorClosedSprite;
+
         }
     }
 
