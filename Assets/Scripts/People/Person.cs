@@ -120,13 +120,16 @@ namespace Assets.Scripts.People
 
             _rigidBody.AddForce(transform.up * (_thrust * Time.fixedDeltaTime));
 
+        }
+
+        public void Update()
+        {
 #if UNITY_EDITOR
-            if(Input.GetKey(KeyCode.Period))
+            if (Input.GetKeyDown(KeyCode.Period))
             {
                 GameManager.Instance.NextRoom();
             }
 #endif
-
         }
 
         private IEnumerator AttractPointCooldown()
