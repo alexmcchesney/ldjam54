@@ -305,6 +305,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[0].MaxMass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[0].MinMass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[0].MaxThrust
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[0].MinThrust
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[0].TimeToSpawn
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[0].TotalSpawned
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[0].PercentageChanceOfAttractPointSelection
+      value: 33
+      objectReference: {fileID: 0}
     - target: {fileID: 92032305116779026, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
       propertyPath: m_Name
       value: PersonSpawner
@@ -12477,8 +12509,40 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[0].MaxMass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[0].MinMass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[0].MaxThrust
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[0].MinThrust
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[0].TimeToSpawn
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[0].TotalSpawned
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
       propertyPath: _percentageChanceOfAttractPointSelection
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[0].PercentageChanceOfAttractPointSelection
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 92032305116779026, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
       propertyPath: m_Name

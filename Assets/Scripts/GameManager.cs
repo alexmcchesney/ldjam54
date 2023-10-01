@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     public static System.Action OnNewRoom;
 
+    public int Iteration { get; private set; } = 0;
+
     public static GameManager Instance { get; private set; }
 
     public void Awake()
@@ -38,6 +40,7 @@ public class GameManager : MonoBehaviour
     public void OnEnable()
     {
         Anxiety.OnAnxietyChange += OnAnxietyChange;
+        Iteration = 0;
 
         // There may be a room already loaded in the editor
         var existing = FindObjectOfType<Room>();
@@ -61,6 +64,7 @@ public class GameManager : MonoBehaviour
         if(_currentRoomIndex > _roomPrefabs.Length-1)
         {
             _currentRoomIndex = 0;
+            Iteration++;
         }
 
         _currentRoom = Instantiate(_roomPrefabs[_currentRoomIndex], transform);
