@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0745c5584901140bf54de9004d3029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationSpeed: 10
+  _rotationSpeed: 25
   _attractPointCooldownTime: 3
 --- !u!82 &5960346324239437860
 AudioSource:

@@ -1,11 +1,8 @@
 using Assets.Scripts.People;
 using Assets.Scripts.Utility;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Assets.Scripts.Environment
 {

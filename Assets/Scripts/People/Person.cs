@@ -6,6 +6,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.GraphicsBuffer;
 
 namespace Assets.Scripts.People
 {
@@ -19,7 +20,7 @@ namespace Assets.Scripts.People
 
         private float _thrust;
 
-        public static HashSet<GameObject> LivePeople { get; private set; } = new ();
+        public static HashSet<GameObject> LivePeople { get; private set; } = new();
 
         private Rigidbody2D _rigidBody;
 
@@ -31,7 +32,7 @@ namespace Assets.Scripts.People
 
         private Coroutine _attractPointCooldown;
 
-        
+
 
         public void Awake()
         {
@@ -47,7 +48,7 @@ namespace Assets.Scripts.People
         {
             LivePeople.Remove(gameObject);
 
-            if(_attractPointCooldown != null)
+            if (_attractPointCooldown != null)
             {
                 _attractPointCooldown = null;
                 _thrust *= 2;
@@ -69,9 +70,16 @@ namespace Assets.Scripts.People
 
         private void SelectAttractPoint()
         {
-            if (AttractPoint.LiveAttractPoints.Count > 0 && Random.Range(0, 100) < _percentageChanceOfAttractPointSelection)
+            if (AttractPoint.LiveAttractPoints.Count > 0 && Random.Range(0, 100) < _percentageChanceOfAttractPointSelection && (_currentAttractPoint == null || AttractPoint.LiveAttractPoints.Count > 1))
             {
-                _currentAttractPoint = AttractPoint.LiveAttractPoints.ElementAt(Random.Range(0, AttractPoint.LiveAttractPoints.Count));
+                var oldAttractPoint = _currentAttractPoint;
+
+                do
+                {
+                    _currentAttractPoint = AttractPoint.LiveAttractPoints.ElementAt(Random.Range(0, AttractPoint.LiveAttractPoints.Count));
+                }
+                while(_currentAttractPoint == oldAttractPoint);
+
                 _targetPosition = ((Vector2)_currentAttractPoint.transform.position) + (Random.insideUnitCircle * _currentAttractPoint.Radius);
             }
             else
@@ -89,12 +97,12 @@ namespace Assets.Scripts.People
                 _attractPointCooldown = StartCoroutine(AttractPointCooldown());
             }
             else if(_targetPosition != null)
-            { 
+            {
                 // We have an attract point but we're not close to it, so turn towards it.
-                float angle = Mathf.Atan2(((Vector2)_targetPosition).y - transform.position.y, ((Vector2)_targetPosition).x - transform.position.x) * Mathf.Rad2Deg;
+                float angle = Mathf.Atan2(((Vector2)_targetPosition).y - transform.position.y,  ((Vector2)_targetPosition).x - transform.position.x) * Mathf.Rad2Deg;
+                angle -= 90f;
                 Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
-
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.fixedDeltaTime);
             }
 
             _rigidBody.AddForce(transform.up * (_thrust * Time.fixedDeltaTime));
@@ -112,6 +120,7 @@ namespace Assets.Scripts.People
             _thrust *= 2;
             SelectAttractPoint();
             _attractPointCooldown = null;
+
         }
 
         public void OnCollisionEnter2D(Collision2D collision)
