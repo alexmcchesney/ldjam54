@@ -98,11 +98,18 @@ namespace Assets.Scripts.People
             }
             else if(_targetPosition != null)
             {
-                // We have an attract point but we're not close to it, so turn towards it.
+                // We have a target position but we're not close to it, so turn towards it.
                 float angle = Mathf.Atan2(((Vector2)_targetPosition).y - transform.position.y,  ((Vector2)_targetPosition).x - transform.position.x) * Mathf.Rad2Deg;
                 angle -= 90f;
                 Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.fixedDeltaTime);
+
+                // If we have a target position but not an attract point, get rid of it when we are within 1 unit
+                if(_currentAttractPoint == null && Vector2.Distance(transform.position, (Vector2)_targetPosition) < 1)
+                {
+                    _targetPosition = null;
+                    SelectAttractPoint();
+                }
             }
 
             _rigidBody.AddForce(transform.up * (_thrust * Time.fixedDeltaTime));
@@ -132,6 +139,19 @@ namespace Assets.Scripts.People
 
                 // Maybe pick an attract point?
                 SelectAttractPoint();
+            }
+        }
+
+        public void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("Repeller") && _targetPosition == null)
+            {
+                // Pick a target position away from the repeller
+                do
+                {
+                    _targetPosition = new Vector2(Random.Range(-5, 5), Random.Range(-4, 4));
+                }
+                while (Vector2.Distance((Vector2)_targetPosition, collision.gameObject.transform.position) < collision.gameObject.GetComponent<CircleCollider2D>().radius);
             }
         }
     }
