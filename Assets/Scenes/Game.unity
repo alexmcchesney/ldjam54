@@ -1623,11 +1623,14 @@ MonoBehaviour:
   - {fileID: 50428388311511782, guid: 598dbcc757c91e447a7d01e3bc33db2d, type: 3}
   - {fileID: 5060253700525236246, guid: 309217931a3d5f64487075f41ac5952b, type: 3}
   - {fileID: 50428388311511782, guid: e08a653f724658143a1acda6ea3333e3, type: 3}
+  - {fileID: 8300002176248464001, guid: f8e5015a8f76f314f8729691b4a685b9, type: 3}
   - {fileID: 50428388311511782, guid: bed63216f33ec9c4e8ee4068bae22981, type: 3}
-  - {fileID: 50428388311511782, guid: 49090e0801a892b448c04bd16d614541, type: 3}
+  - {fileID: 3488410640050333313, guid: 2840fc488171c634d90ee2c8714a110f, type: 3}
   - {fileID: 50428388311511782, guid: 0e12df7363030204d954e3664d28b729, type: 3}
+  - {fileID: 289972993386292999, guid: 6cf1eb29958b8534193899972891406b, type: 3}
   - {fileID: 50428388311511782, guid: 701f55ef717fb094bab16128faeb65f6, type: 3}
   - {fileID: 50428388311511782, guid: d85cf32ca2b0bda4d8777f3d75866af6, type: 3}
+  - {fileID: 602758274951731610, guid: b2c182cd057828841a4ec9b9a46199d8, type: 3}
   _player: {fileID: 168735585}
   _gameOverNotice: {fileID: 1689113463}
 --- !u!1001 &2055764331
@@ -1652,11 +1655,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2158074166765407363, guid: ccd09f8b783cc174aa1ab664aac6f609, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4.97
       objectReference: {fileID: 0}
     - target: {fileID: 2158074166765407363, guid: ccd09f8b783cc174aa1ab664aac6f609, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -4.26
       objectReference: {fileID: 0}
     - target: {fileID: 2158074166765407363, guid: ccd09f8b783cc174aa1ab664aac6f609, type: 3}
       propertyPath: m_LocalPosition.z
