@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4523546120023649329}
   - component: {fileID: 3595253567941911298}
   - component: {fileID: 438953296239029457}
+  - component: {fileID: 3734599507082511871}
   m_Layer: 6
   m_Name: Person
   m_TagString: Person
@@ -163,3 +164,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationSpeed: 25
   _attractPointCooldownTime: 3
+--- !u!114 &3734599507082511871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8161963200355773116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d35e11fdfe06a34aaf189c26197e5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
