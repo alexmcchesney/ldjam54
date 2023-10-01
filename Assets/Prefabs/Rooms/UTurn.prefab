@@ -36,7 +36,7 @@ Transform:
   - {fileID: 3360186241200884821}
   - {fileID: 1420911239859553238}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1856905503356359992
 MonoBehaviour:
@@ -5106,7 +5106,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
       propertyPath: _settings.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
       propertyPath: _settings.Array.data[0].MaxMass
@@ -5122,6 +5122,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
       propertyPath: _settings.Array.data[1].MinMass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[2].MaxMass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[2].MinMass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[3].MaxMass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[3].MinMass
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
@@ -5141,20 +5157,52 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[2].MaxThrust
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[2].MinThrust
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[3].MaxThrust
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[3].MinThrust
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
       propertyPath: _settings.Array.data[0].TimeToSpawn
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
       propertyPath: _settings.Array.data[1].TimeToSpawn
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[2].TimeToSpawn
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[3].TimeToSpawn
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
       propertyPath: _settings.Array.data[0].TotalSpawned
-      value: 75
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
       propertyPath: _settings.Array.data[1].TotalSpawned
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[2].TotalSpawned
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[3].TotalSpawned
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
       propertyPath: _settings.Array.data[0].PercentageChanceOfAttractPointSelection
@@ -5162,6 +5210,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
       propertyPath: _settings.Array.data[1].PercentageChanceOfAttractPointSelection
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[2].PercentageChanceOfAttractPointSelection
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: -4325574571816974481, guid: b66b45e747d40434298e4a73cd78f089, type: 3}
+      propertyPath: _settings.Array.data[3].PercentageChanceOfAttractPointSelection
       value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 92032305116779026, guid: b66b45e747d40434298e4a73cd78f089, type: 3}

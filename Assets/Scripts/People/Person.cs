@@ -122,6 +122,16 @@ namespace Assets.Scripts.People
 
         }
 
+        public void Update()
+        {
+#if UNITY_EDITOR
+            if (Input.GetKeyDown(KeyCode.Period))
+            {
+                GameManager.Instance.NextRoom();
+            }
+#endif
+        }
+
         private IEnumerator AttractPointCooldown()
         {
             _currentAttractPoint = null;
