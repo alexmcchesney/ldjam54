@@ -1,6 +1,7 @@
 using Assets.Scripts.Utility;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.People
@@ -19,6 +20,11 @@ namespace Assets.Scripts.People
             public float PercentageChanceOfAttractPointSelection = 25f;
         }
 
+        public static int MaxPeopleInRoom => _All.Select(x => x.GetTotalSpawnedThisIteration()).Sum();
+
+
+        private static List<PersonSpawner> _All = new List<PersonSpawner>();
+
         [SerializeField]
         private IterationSettings[] _settings;
 
@@ -33,8 +39,16 @@ namespace Assets.Scripts.People
 
         public void OnEnable()
         {
+            _All.Add(this);
             StartCoroutine(SpawnRoutine());
         }
+
+
+        public void OnDisable()
+        {
+            _All.Remove(this);
+        }
+
 
         private IEnumerator SpawnRoutine()
         {
@@ -88,6 +102,11 @@ namespace Assets.Scripts.People
             {
                 return _settings[iteration];
             }
+        }
+
+        public int GetTotalSpawnedThisIteration()
+        {
+            return GetCurrentIterationSettings().TotalSpawned;
         }
     }
 
