@@ -1,4 +1,5 @@
 using UnityEngine;
+using Assets.Scripts.People;
 
 public class VolumeController : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class VolumeController : MonoBehaviour
 
     void Update()
     {
-        int numPersons = GameObject.FindGameObjectsWithTag("Person").Length;
+        int numPersons = Person.LivePeople.Count;
         float volume = Mathf.Clamp01((float)numPersons / maxVolumePersons) * maxVolume;
         audioSource.volume = volume;
     }
