@@ -10,7 +10,7 @@ using VFX;
 
 public class GameManager : MonoBehaviour
 {
-    public int CurrentRoomIndex => _currentRoomIndex;
+    public int RoomReached {  get; private set; }
 
 
     [SerializeField]
@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
 
     private void SpawnRoom(bool instant)
     {
+        RoomReached++;
+
         if(_currentRoomIndex > _roomPrefabs.Length-1)
         {
             _currentRoomIndex = 0;
@@ -88,6 +90,7 @@ public class GameManager : MonoBehaviour
     public void StartOver()
     {
         _currentRoomIndex = 0;
+        RoomReached = 0;
         _player.GetComponent<Controller>().Reset();
         _currentRoom.GetComponent<Room>().OnExit(true);
         Destroy(_currentRoom);
