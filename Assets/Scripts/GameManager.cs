@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     public void StartOver()
     {
         _currentRoomIndex = 0;
-        _player.GetComponent<Anxiety>().Reset();
+        _player.GetComponent<Controller>().Reset();
         _currentRoom.GetComponent<Room>().OnExit(true);
         Destroy(_currentRoom);
         _gameOverNotice.SetActive(false);

@@ -7,25 +7,35 @@ namespace Player {
     [RequireComponent(typeof(Anxiety))]
     public class Controller : MonoBehaviour
     {
-        Rigidbody2D _Rigidbody2D => GetComponent<Rigidbody2D> ();
-
-        public float speed = 1f;
         public float rotationSpeed = 1000f;
+
         public float recoilForce = 4f;
         public float deadzone = 0.01f;
 
         private Anxiety _anxiety;
+        private SprintManager _sprintManager;
+        private Rigidbody2D _rigidbody2D;
+
 
         public void Awake()
         {
             _anxiety = GetComponent<Anxiety> ();
+            _sprintManager = GetComponent<SprintManager> ();
+            _rigidbody2D = GetComponent<Rigidbody2D> ();
+        }
+
+
+        public void Reset()
+        {
+            _anxiety.Reset();
+            _sprintManager.Reset();
         }
 
 
         private void FixedUpdate()
         {
             Vector2 direction = InputDirection();
-            if (!_anxiety.IsInvulnerable) { _Rigidbody2D.velocity = speed * direction; }
+            if (!_anxiety.IsInvulnerable) { _rigidbody2D.velocity = _sprintManager.CalculateSpeed() * direction; }
 
             if (direction == Vector2.zero) { return; }
 
@@ -54,7 +64,7 @@ namespace Player {
             float recoilY = transform.position.y - collision.transform.position.y;
             Vector2 recoil = recoilForce * new Vector2 (recoilX, recoilY);
 
-            _Rigidbody2D.AddForce(recoil, ForceMode2D.Impulse);
+            _rigidbody2D.AddForce(recoil, ForceMode2D.Impulse);
         }
 
         public void OnTriggerEnter2D(Collider2D collision)
