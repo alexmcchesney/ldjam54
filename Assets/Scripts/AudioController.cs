@@ -29,6 +29,7 @@ public class VolumeController : MonoBehaviour
     {
         Player.Anxiety.OnAnxietyChange += UpdateAnxiety;
         GameManager.OnNewRoom += SlamVolumeToZero;
+        HUD.PauseScreen.OnPauseChange += HandlePause;
     }
 
 
@@ -36,6 +37,7 @@ public class VolumeController : MonoBehaviour
     {
         Player.Anxiety.OnAnxietyChange -= UpdateAnxiety;
         GameManager.OnNewRoom -= SlamVolumeToZero;
+        HUD.PauseScreen.OnPauseChange -= HandlePause;
     }
 
 
@@ -75,6 +77,13 @@ public class VolumeController : MonoBehaviour
     void UpdateAnxiety(float anxiety)
     {
         _anxiety = anxiety;
+    }
+
+
+    void HandlePause(bool isPaused)
+    {
+        _normalAudioSource.enabled = !isPaused;
+        _warpedAudioSource.enabled = !isPaused;
     }
 
     /*

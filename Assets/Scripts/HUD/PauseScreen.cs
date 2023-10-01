@@ -6,14 +6,21 @@ namespace HUD
 {
     public class PauseScreen : MonoBehaviour
     {
+        public static event System.Action<bool> OnPauseChange;
+
+
         public bool IsPaused {
             get { return _isPaused; }
             set
             {
+                if (_isPaused == value) { return; }
+
                 _isPaused = value;
                 _canvasGroup.alpha = _isPaused ? 1f : 0;
                 _canvasGroup.blocksRaycasts = _isPaused;
                 Time.timeScale = _isPaused ? 0 : 1f;
+
+                if (OnPauseChange != null) { OnPauseChange(value); }
             }
         }
         
