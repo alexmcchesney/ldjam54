@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VFX;
 
 public class GameManager : MonoBehaviour
 {
@@ -107,6 +108,7 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         Person.PoolAllPeople();
+        CameraShake.Instance.CancelShake();
         SceneManager.UnloadSceneAsync("Game");
         SceneManager.LoadScene("Title", LoadSceneMode.Additive);
     }
