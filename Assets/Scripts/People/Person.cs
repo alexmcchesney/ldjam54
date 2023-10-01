@@ -108,6 +108,7 @@ namespace Assets.Scripts.People
                 if(_currentAttractPoint == null && Vector2.Distance(transform.position, (Vector2)_targetPosition) < 1)
                 {
                     _targetPosition = null;
+                    SelectAttractPoint();
                 }
             }
 
