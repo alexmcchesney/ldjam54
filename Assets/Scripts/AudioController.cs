@@ -28,12 +28,14 @@ public class VolumeController : MonoBehaviour
     private void OnEnable()
     {
         Player.Anxiety.OnAnxietyChange += UpdateAnxiety;
+        GameManager.OnNewRoom += SlamVolumeToZero;
     }
 
 
     private void OnDisable()
     {
         Player.Anxiety.OnAnxietyChange -= UpdateAnxiety;
+        GameManager.OnNewRoom -= SlamVolumeToZero;
     }
 
 
@@ -41,6 +43,13 @@ public class VolumeController : MonoBehaviour
     {
         UpdateVolumeTargets();
         LerpVolumes();
+    }
+
+
+    void SlamVolumeToZero()
+    {
+        _normalAudioSource.volume = 0;
+        _warpedAudioSource.volume = 0;
     }
 
 
