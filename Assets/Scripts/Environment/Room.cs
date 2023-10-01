@@ -1,10 +1,8 @@
 using Assets.Scripts.People;
 using Assets.Scripts.Utility;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Assets.Scripts.Environment
 {
