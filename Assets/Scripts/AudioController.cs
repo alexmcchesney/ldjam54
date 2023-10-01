@@ -3,21 +3,69 @@ using Assets.Scripts.People;
 
 public class VolumeController : MonoBehaviour
 {
-    public int maxVolumePersons = 100;
-    public float maxVolume = 1.0f;
-
-    private AudioSource audioSource;
-
-    void Start()
+    public int MaxPeopleInRoom
     {
-        audioSource = GetComponent<AudioSource>();
+        get
+        {
+            int currentMax = PersonSpawner.MaxPeopleInRoom;
+            if (currentMax <= 0) { currentMax = defaultMaxPeopleInRoom; }
+
+            return currentMax;
+        }
     }
+    public float maxVolume = 1.0f;
+    public int defaultMaxPeopleInRoom = 400;
+    public float lerpIntensity = 0.12f;
+
+
+    [SerializeField] AudioSource _normalAudioSource;
+    [SerializeField] AudioSource _warpedAudioSource;
+    float _anxiety = 0;
+    float _normalVolumeTarget = 0;
+    float _warpedVolumeTarget = 0;
+
+
+    private void OnEnable()
+    {
+        Player.Anxiety.OnAnxietyChange += UpdateAnxiety;
+    }
+
+
+    private void OnDisable()
+    {
+        Player.Anxiety.OnAnxietyChange -= UpdateAnxiety;
+    }
+
 
     void Update()
     {
+        UpdateVolumeTargets();
+        LerpVolumes();
+    }
+
+
+    void UpdateVolumeTargets()
+    {
         int numPersons = Person.LivePeople.Count;
-        float volume = Mathf.Clamp01((float)numPersons / maxVolumePersons) * maxVolume;
-        audioSource.volume = volume;
+        float combinedVolume = Mathf.Clamp01((float)numPersons / MaxPeopleInRoom) * maxVolume;
+
+        float warpFraction = Mathf.InverseLerp(0, Player.Anxiety.MAX_ANXIETY, _anxiety);
+
+        _warpedVolumeTarget = warpFraction * combinedVolume;
+        _normalVolumeTarget = (1 - warpFraction) * combinedVolume;
+    }
+
+
+    void LerpVolumes()
+    {
+        _normalAudioSource.volume = Mathf.Lerp(_normalAudioSource.volume, _normalVolumeTarget, lerpIntensity);
+        _warpedAudioSource.volume = Mathf.Lerp(_warpedAudioSource.volume, _warpedVolumeTarget, lerpIntensity);
+    }
+
+
+    void UpdateAnxiety(float anxiety)
+    {
+        _anxiety = anxiety;
     }
 
     /*
