@@ -7,21 +7,31 @@ namespace Player
     public class SprintManager : MonoBehaviour
     {
         public static event System.Action<float> OnStaminaChange;
+        public static event System.Action<bool> OnExhaustionSet;
 
 
         public float Stamina {
             get { return _stamina; }
             set {
                 float newValue = Mathf.Clamp01(value);
-                if(newValue != _stamina)
+                if (newValue != _stamina)
                 {
                     _stamina = newValue;
                     if (OnStaminaChange != null) { OnStaminaChange(newValue); }
-                    if (newValue == 0) { TriggerExhaustion(); }
+                    if (newValue == 0) { IsExhausted = true; }
+                    if (newValue == 1f) { IsExhausted = false; }
                 }
             }
         }
-        public bool IsExhausted => _exhaustionDurationCoroutine != null;
+        public bool IsExhausted {
+            get { return _isExhausted; }
+            set
+            {
+                if (_isExhausted == value) { return; }
+                _isExhausted = value;
+                if(OnExhaustionSet != null) { OnExhaustionSet(value); }
+            }
+        }
         public bool SprintRequested => Input.GetButton("Submit");
 
 
@@ -29,12 +39,12 @@ namespace Player
         public float sprintMultiplier = 2f;
         public float sprintBurnTimer = 1.5f;
         public float sprintRecoveryTimer = 3f;
-        public float exhaustionSpeedMultiplier = 0.4f;
-        public float exhaustionDuration = 5f;
+        public float exhaustionSpeedMultiplier = 0.8f;
 
 
         private Coroutine _exhaustionDurationCoroutine;
         private float _stamina = 1f;
+        private bool _isExhausted = false;
 
 
         public void Reset()
@@ -52,7 +62,7 @@ namespace Player
         {
             UpdateStamina();
 
-            if(IsExhausted) { return baseSpeed * exhaustionSpeedMultiplier; }
+            if(IsExhausted) { return baseSpeed; }
             if(SprintRequested) { return baseSpeed * sprintMultiplier; }
 
             return baseSpeed;
@@ -61,9 +71,7 @@ namespace Player
 
         void UpdateStamina()
         {
-            if (IsExhausted) { return; }
-
-            if(SprintRequested)
+            if(SprintRequested && !IsExhausted)
             {
                 Stamina -= Time.fixedDeltaTime / sprintBurnTimer;
             }
@@ -71,21 +79,6 @@ namespace Player
             {
                 Stamina += Time.fixedDeltaTime / sprintRecoveryTimer;
             }
-        }
-
-
-        public void TriggerExhaustion ()
-        {
-            _exhaustionDurationCoroutine = StartCoroutine(ExhaustionDurationCoroutine());
-        }
-
-
-        IEnumerator ExhaustionDurationCoroutine()
-        {
-            yield return new WaitForSeconds(exhaustionDuration);
-
-            Stamina = 1f;
-            _exhaustionDurationCoroutine = null;
         }
     }
 }
