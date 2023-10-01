@@ -47,11 +47,21 @@ namespace Assets.Scripts.People
             _doorSpriteRenderer.sprite = _doorOpenSprite;
 
             yield return null;
-            float spawnRate = _timeToSpawn / _totalSpawned;
+
+            float spawnRate;
+            if(_totalSpawned > 0)
+            {
+                spawnRate = _timeToSpawn / _totalSpawned;
+            }
+            else
+            {
+                spawnRate = 0.2f;
+            }
+
             WaitForSeconds delay = new WaitForSeconds(spawnRate);
 
             int spawned = 0;
-            while(spawned < _totalSpawned) 
+            while(spawned < _totalSpawned || _totalSpawned < 0) 
             {
                 GameObject personObj = ObjectPool.GetObjectForType("Person", transform, transform.position);
                 Person person = personObj.GetComponent<Person>();
