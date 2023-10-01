@@ -1,9 +1,12 @@
 using Assets.Scripts.Environment;
+using Assets.Scripts.People;
 using Player;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using VFX;
 
 public class GameManager : MonoBehaviour
 {
@@ -104,10 +107,9 @@ public class GameManager : MonoBehaviour
 
     public void Quit()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        Person.PoolAllPeople();
+        CameraShake.Instance.CancelShake();
+        SceneManager.UnloadSceneAsync("Game");
+        SceneManager.LoadScene("Title", LoadSceneMode.Additive);
     }
 }
