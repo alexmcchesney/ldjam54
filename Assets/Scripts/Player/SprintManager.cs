@@ -42,7 +42,6 @@ namespace Player
         public float exhaustionSpeedMultiplier = 0.8f;
 
 
-        private Coroutine _exhaustionDurationCoroutine;
         private float _stamina = 1f;
         private bool _isExhausted = false;
 
@@ -50,11 +49,7 @@ namespace Player
         public void Reset()
         {
             Stamina = 1f;
-            if(_exhaustionDurationCoroutine != null)
-            {
-                StopCoroutine(_exhaustionDurationCoroutine);
-                _exhaustionDurationCoroutine = null;
-            }
+            IsExhausted = false;
         }
 
 

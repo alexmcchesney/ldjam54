@@ -25,7 +25,7 @@ namespace HUD
 
         void UpdateCount()
         {
-            count.text = (1 + GameManager.Instance.CurrentRoomIndex).ToString();
+            count.text = (GameManager.Instance.RoomReached).ToString();
         }
     }
 }
