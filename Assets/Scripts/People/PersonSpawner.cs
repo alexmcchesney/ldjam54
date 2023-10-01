@@ -1,12 +1,19 @@
 using Assets.Scripts.Utility;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.People
 {
     public class PersonSpawner : MonoBehaviour
     {
+        public static int MaxPeopleInRoom => _All.Select(x => x._totalSpawned).Sum();
+
+
+        private static List<PersonSpawner> _All = new List<PersonSpawner>();
+
+
         [SerializeField]
         private int _totalSpawned;
 
@@ -39,8 +46,16 @@ namespace Assets.Scripts.People
 
         public void OnEnable()
         {
+            _All.Add(this);
             StartCoroutine(SpawnRoutine());
         }
+
+
+        public void OnDisable()
+        {
+            _All.Remove(this);
+        }
+
 
         private IEnumerator SpawnRoutine()
         {
