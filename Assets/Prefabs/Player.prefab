@@ -131,9 +131,6 @@ MonoBehaviour:
   rotationSpeed: 1000
   recoilForce: 4
   deadzone: 0.1
-  _anxiety: {fileID: 2267823133253228483}
-  _sprintManager: {fileID: 8528740465573781017}
-  _rigidbody2D: {fileID: 7123262831517017510}
 --- !u!114 &2267823133253228483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,8 +163,7 @@ MonoBehaviour:
   sprintMultiplier: 2
   sprintBurnTimer: 1.5
   sprintRecoveryTimer: 3
-  exhaustionSpeedMultiplier: 0.4
-  exhaustionDuration: 5
+  exhaustionSpeedMultiplier: 0.8
 --- !u!58 &6100889505388150649
 CircleCollider2D:
   m_ObjectHideFlags: 0
