@@ -154,6 +154,16 @@ namespace Assets.Scripts.People
                 while (Vector2.Distance((Vector2)_targetPosition, collision.gameObject.transform.position) < collision.gameObject.GetComponent<CircleCollider2D>().radius);
             }
         }
+
+        public static void PoolAllPeople()
+        {
+            // Clean up all people
+            GameObject[] livePeople = Person.LivePeople.ToArray();
+            foreach (GameObject person in livePeople)
+            {
+                ObjectPool.PoolObject(person);
+            }
+        }
     }
 
 }
