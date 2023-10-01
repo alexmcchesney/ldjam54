@@ -25,6 +25,9 @@ namespace Assets.Scripts.People
         [SerializeField]
         private float _maxMass;
 
+        [SerializeField]
+        private float _percentageChanceOfAttractPointSelection = 25f;
+
         public void OnEnable()
         {
             StartCoroutine(SpawnRoutine());
@@ -41,15 +44,8 @@ namespace Assets.Scripts.People
             {
                 GameObject personObj = ObjectPool.GetObjectForType("Person", transform, transform.position);
                 Person person = personObj.GetComponent<Person>();
-                person.Thrust = Random.Range(_minThrust, _maxThrust);
-                person.Direction = transform.rotation.eulerAngles.z;
-
-                Rigidbody2D rb = personObj.GetComponent<Rigidbody2D>();
-                rb.mass = Random.Range(_minMass, _maxMass);
-
-                float scale = 1f + ((rb.mass - 1) / 8);
-                person.transform.localScale = new Vector3(scale, scale);
-
+                person.OnSpawn(Random.Range(_minThrust, _maxThrust), transform.rotation.eulerAngles.z, Random.Range(_minMass, _maxMass), _percentageChanceOfAttractPointSelection);
+                
                 spawned++;
                 yield return delay;
             }
