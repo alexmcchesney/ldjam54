@@ -11,11 +11,14 @@ namespace Player
         public static event System.Action<float> OnAnxietyChange;
 
 
+        public const float MAX_ANXIETY = 1f;
+
+
         public float Value {
             get { return _value; }
             set
             {
-                float newValue = Mathf.Clamp01(value);
+                float newValue = Mathf.Clamp(value, 0, MAX_ANXIETY);
                 if(newValue != _value && OnAnxietyChange != null) { OnAnxietyChange(newValue); }
 
                 _value = newValue;
