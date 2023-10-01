@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7123262831517017510}
   - component: {fileID: 2364123722109361063}
   - component: {fileID: 2267823133253228483}
+  - component: {fileID: 8528740465573781017}
   - component: {fileID: 6100889505388150649}
   m_Layer: 7
   m_Name: Player
@@ -127,10 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36050685ed5475449c054ee9649a6d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   rotationSpeed: 1000
   recoilForce: 4
   deadzone: 0.1
+  _anxiety: {fileID: 2267823133253228483}
+  _sprintManager: {fileID: 8528740465573781017}
+  _rigidbody2D: {fileID: 7123262831517017510}
 --- !u!114 &2267823133253228483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +150,24 @@ MonoBehaviour:
   invulnerabilityDuration: 0.2
   _anxietyCooldown: 0
   _percentageRecoveryOnNewRoom: 0
+--- !u!114 &8528740465573781017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3953114961288773498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e863ca5b51923409414a9a25db97b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseSpeed: 3
+  sprintMultiplier: 2
+  sprintBurnTimer: 1.5
+  sprintRecoveryTimer: 3
+  exhaustionSpeedMultiplier: 0.4
+  exhaustionDuration: 5
 --- !u!58 &6100889505388150649
 CircleCollider2D:
   m_ObjectHideFlags: 0
