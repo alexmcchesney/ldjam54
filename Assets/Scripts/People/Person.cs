@@ -32,11 +32,17 @@ namespace Assets.Scripts.People
 
         private Coroutine _attractPointCooldown;
 
+        private SpriteRenderer _spriteRenderer;
 
+        [SerializeField] private Sprite[] sprites;
 
         public void Awake()
         {
             _rigidBody = GetComponent<Rigidbody2D>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+
+            int randomIndex = Random.Range(0, sprites.Length);
+            _spriteRenderer.sprite = sprites[randomIndex];
         }
 
         public void OnEnable()
