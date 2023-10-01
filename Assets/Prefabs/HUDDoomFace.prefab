@@ -73,6 +73,8 @@ MonoBehaviour:
     upperAnxietyBound: 0.8
   - sprite: {fileID: 21300000, guid: 751f4b25aae80ee44aa862633fe7ade9, type: 3}
     upperAnxietyBound: 1
+  - sprite: {fileID: 21300000, guid: cdb87dd041fc2dc4aac20a32a52ec24f, type: 3}
+    upperAnxietyBound: 1.1
 --- !u!1 &5205052327897322931
 GameObject:
   m_ObjectHideFlags: 0
