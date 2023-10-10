@@ -349,12 +349,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 1544567646}
     m_Modifications:
     - target: {fileID: 95452769015513474, guid: 0ae053973a7b2bb489df0980676b2155, type: 3}
+      propertyPath: m_fontSize
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 95452769015513474, guid: 0ae053973a7b2bb489df0980676b2155, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 1adedd265e9788740813f27bc9136360, type: 2}
+    - target: {fileID: 95452769015513474, guid: 0ae053973a7b2bb489df0980676b2155, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95452769015513474, guid: 0ae053973a7b2bb489df0980676b2155, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 95452769015513474, guid: 0ae053973a7b2bb489df0980676b2155, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7294033583269137730, guid: 1adedd265e9788740813f27bc9136360, type: 2}
+    - target: {fileID: 95452769015513474, guid: 0ae053973a7b2bb489df0980676b2155, type: 3}
       propertyPath: m_VerticalAlignment
       value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 95452769015513474, guid: 0ae053973a7b2bb489df0980676b2155, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95452769015513474, guid: 0ae053973a7b2bb489df0980676b2155, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1093462568220844947, guid: 0ae053973a7b2bb489df0980676b2155, type: 3}
       propertyPath: m_AnchorMax.x
@@ -923,8 +947,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: NO!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1adedd265e9788740813f27bc9136360, type: 2}
+  m_sharedMaterial: {fileID: 7294033583269137730, guid: 1adedd265e9788740813f27bc9136360, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -948,13 +972,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1095,7 +1119,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -59, y: 80}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1242109668
 MonoBehaviour:
@@ -1119,8 +1143,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PANIC ATTACK!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1adedd265e9788740813f27bc9136360, type: 2}
+  m_sharedMaterial: {fileID: 7294033583269137730, guid: 1adedd265e9788740813f27bc9136360, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1150,7 +1174,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
