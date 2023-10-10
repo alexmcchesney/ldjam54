@@ -73,3 +73,7 @@ crashlytics-build.properties
 
 .vscode
 .vsconfig
+Assets/Tiles/DoorOpen.png.meta
+Assets/Tiles/DoorClosedSprite.png.meta
+Assets/Tiles/DoorClosed.png.meta
+Assets/Sprites/peopleFat.png.meta
